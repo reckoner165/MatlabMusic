@@ -4,10 +4,10 @@ fs = 44100;
 x = wgn(1,2*fs,1);
 
 %Filter
-[b,a] = butter(7,0.97,'low');
+[b,a] = butter(7,0.98,'low');
 freqz(b,a);
 hat = filter(b,a,x);
-[b,a] = butter(9,0.96,'high');
+[b,a] = butter(9,0.975,'high');
 
 
 
