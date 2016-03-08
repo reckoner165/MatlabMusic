@@ -1,0 +1,20 @@
+Increase the delay of a lowpass filter to get a comb filter. 
+
+
+Quantization - Number of bits used to represent a given sample. Our ears can sense music even in low quantization levels - an important piece of useful info 
+
+Dithering - add little bit of noise to mask harmonic noise artifacts, making them more 'inaudible'
+
+Equal power panning (vs. normal panning?) actually employs a logarithmic increase/decrease of power in each channel to get a smooth panning.
+
+ADSR
+
+Roland SC55
+
+Compressor - Polyfin to model the compressor function
+
+Chebyshev Polynomials and Waveshaping
+
+Chorus - A delay where the delay period is a function of something, so delayed signal comes in with various amounts of delay, giving the illusion of natural imperfections
+
+The flag
