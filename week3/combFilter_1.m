@@ -11,9 +11,9 @@
 fs = 44100;
 % Initializing delay values for the comb resonators and all-pass
 del1 = int64(round(29.7*fs/1000));
-del2 = int64(round(20.1*fs/1000));
-del3 = int64(round(41.1*fs/1000));
-del4 = int64(round(53.7*fs/1000));
+del2 = int64(round(320.1*fs/1000));
+del3 = int64(round(241.1*fs/1000));
+del4 = int64(round(153.7*fs/1000));
 refLen1 = int64(round(5*fs/1000)); 
 refLen2 = int64(round(1.7*fs/1000)); 
 
@@ -28,8 +28,8 @@ b2 = zeros(1,del2); b2(1) = 1;
 b3 = zeros(1,del3); b3(1) = 1; 
 b4 = zeros(1,del4); b4(1) = 1; 
 
-x = audioread('../audio/NilsMono.wav');
-
+% x = audioread('hwTrack.wav');
+x = music;
 % Applying the input through 4 comb resonators in parallel
 
 y1 = filter(b1,a1,x);

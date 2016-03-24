@@ -49,7 +49,15 @@ end
 
 end
 
+%% QUESTION
 
+% When using the all-pass filter version for fractional delay, what are some of the
+% problems?
+
+% All-pass filter has a non-uniform phase response, which results in a
+% different phase delay at different frequencies. This is more prominent
+% towards the higher frequencies, where there is a drastic increase in
+% delay.
 
 
 
