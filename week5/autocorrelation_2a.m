@@ -1,28 +1,35 @@
 % autocorrelation_2a
 
-% [stereo,fs] = audioread('guitarA.wav');
-% t = 0.5*(stereo(:,1)+stereo(:,2));
-% [b,a] = cheby1(9,0.7,0.2,'low');
-% x = transpose(filter(b,a,t));
-% subplot(2,1,1), plot(abs(fft(t))); subplot(2,1,2), plot(abs(fft(x)));
+% Estimate frequency by autocorrelating it at various sample-delays and
+% looking for recurrent peaks which correspond to the fundamental frequency
+% of the signal.
 
-x = sin(2*pi*500/fs*[1:10*fs]);
-x = transpose(x);
-auto = zeros(1,fs);
-for del = 0:100:fs
-%     x2 = zeros(length(x)+del,1);
-%     x2(del+1:end) = x(1:end);
+% Initialize values
+[x fs] = audioread('testAudio.wav');
+auto = zeros(1,fs/10);
+for del = 0:1:fs/10
+%     Prepare shifted signal
     x2 = circshift(x,del);
-%     auto(del+1) = sum(x(1:end).*x2(1:end-del));
+    x2(1:del) = zeros(del,1);
+
     auto(del+1) = sum(x.*x2);
-%     auto(del+1) = 5*round(auto(del+1)/5);
-    if del > 1
-        if auto(del+1) == auto(1)
-            disp(del);
-            break;
-        end
+
+end
+% Detect Peaks and their locations *besides* the first
+[peak, loc] = findpeaks(auto(2:end));
+
+% Find the peak with greatest energy and get its location
+for j = 1:length(peak)
+    if peak(j) == max(peak)
+%         disp(j)
+        samp = loc(j);
+       
+        break;
     end
 end
+% Display frequency corresponding to this sample delay
+disp(fs/samp);
+
 
 
     
